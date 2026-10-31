@@ -1,0 +1,79 @@
+[
+    {
+        "model": "dogs.breed",
+        "pk": 1,
+        "fields": {
+            "name": "Лабрадор",
+            "description": "Очень красивая собака"
+        }
+    },
+    {
+        "model": "dogs.breed",
+        "pk": 2,
+        "fields": {
+            "name": "Колли",
+            "description": "Красивые собаки"
+        }
+    },
+    {
+        "model": "dogs.breed",
+        "pk": 3,
+        "fields": {
+            "name": "Овчарка",
+            "description": ""
+        }
+    },
+    {
+        "model": "dogs.dog",
+        "pk": 5,
+        "fields": {
+            "name": "Мухтар",
+            "breed": 3,
+            "photo": "dogs/photo/24_Django_DOG_2026-10-20_125215.png",
+            "date_born": "2026-10-20",
+            "views_counter": 0
+        }
+    },
+    {
+        "model": "dogs.dog",
+        "pk": 6,
+        "fields": {
+            "name": "Лесси1",
+            "breed": 2,
+            "photo": "dogs/photo/24_Django_DOG_2026-10-20_125216.png",
+            "date_born": "2026-10-20",
+            "views_counter": 7
+        }
+    },
+    {
+        "model": "dogs.dog",
+        "pk": 7,
+        "fields": {
+            "name": "Гром",
+            "breed": 1,
+            "photo": "dogs/photo/24_Django_DOG_2026-10-20_125217.png",
+            "date_born": "2026-10-20",
+            "views_counter": 5
+        }
+    },
+    {
+        "model": "dogs.parent",
+        "pk": 1,
+        "fields": {
+            "dog": 6,
+            "name": "Гром",
+            "breed": 2,
+            "year_born": 2010
+        }
+    },
+    {
+        "model": "dogs.parent",
+        "pk": 2,
+        "fields": {
+            "dog": 7,
+            "name": "Молния",
+            "breed": 1,
+            "year_born": 2000
+        }
+    }
+]

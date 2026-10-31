@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="auto">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Питомник · Ласковый хвост</title>
+
+    <!-- Подключаем Bootstrap CSS через CDN для стабильной работы -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img { text-anchor: middle; user-select: none; font-size: 1.125rem }
+        @media (min-width: 768px) { .bd-placeholder-img-lg { font-size: 2.5rem } }
+        body { padding-top: 56px; } /* Делаем отступ сверху под фиксированное меню */
+    </style>
+</head>
+<body>
+
+<header>
+    <!-- Добавляем явную тему dark через атрибут data-bs-theme и встроенный стиль для надежности -->
+    <nav class="navbar navbar-expand fixed-top shadow-sm style-theme-dark" data-bs-theme="dark" style="background-color: #212529 !important;">
+        <div class="container">
+            <!-- Левая часть: Название -->
+            <a class="navbar-brand fw-bold text-white" href="{% url 'dogs:dogs_list' %}">Питомник</a>
+
+            <!-- Правая часть: Ссылки меню в один ряд -->
+            <div class="navbar-nav ms-auto gap-3 align-items-center">
+                <a href="{% url 'dogs:dogs_list' %}" class="nav-link text-white-50">Главная</a>
+                {% if user.is_authenticated %}
+                    <form action="{% url 'users:logout' %}" method="post" class="d-inline m-0 p-0">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-outline-light px-3 text-white nav-link d-inline-block">Выход</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'users:login' %}" class="nav-link btn btn-sm btn-light text-dark px-3">Вход</a>
+                    <a href="{% url 'users:register' %}" class="nav-link btn btn-sm btn-outline-light px-3 text-white">Регистрация</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<main class="mt-4">
+    <section class="py-5 text-center container">
+        <div class="row py-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Питомник</h1>
+                <p class="lead text-muted">Ласковый хвост</p>
+                {% if user.is_authenticated %}
+                <p>
+                    <a class="btn btn-primary my-2" href="{% url 'dogs:dogs_create' %}" role="button">Создать питомца</a>
+                </p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Сюда подгружаются списки собак, формы редактирования и т.д. -->
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer class="text-muted py-5 border-top mt-5">
+    <div class="container">
+        <p class="float-end mb-1">
+            <a href="#">Наверх</a>
+        </p>
+        <p class="mb-1">&copy; Питомник «Ласковый хвост». Все права защищены.</p>
+    </div>
+</footer>
+
+<!-- Подключаем официальный JavaScript Bootstrap для работы всех компонентов -->
+<script src="https://jsdelivr.net"></script>
+</body>
+</html>

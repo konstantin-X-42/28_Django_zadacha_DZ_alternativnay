@@ -1,0 +1,36 @@
+{% extends 'dogs/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="album py-5 bg-1">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm p-4">
+                    <img src="{{ dog.photo | media_filter }}">
+                    <!-- 1. Выводим имя конкретной собаки -->
+                    <h1 class="mb-4 text-center">{{ object.name }}</h1>
+                    <p class="mb-4 text">Кличка: {{ object.name }}</p>
+                    <p class="mb-4 text">Порода: {{ object.breed }}</p>
+                    <p class="mb-4 text">Дата рождения: {{ object.date_born }}</p>
+                    <!-- 2. Выводим картинку собаки (Пункт №2 и №6 ДЗ) -->
+                    <div class="text-center mb-4">
+                        {% if dog.image %}
+                        <img src="/media/{{ dog.image }}" class="img-fluid rounded" alt="{{ dog.name }}"
+                             style="max-height: 400px; object-fit: cover;">
+                        {% else %}
+                        {% endif %}
+                    </div>
+
+                    <!-- 4. Кнопка «Назад на главную» (Пункт №4 ДЗ) -->
+                    <div class="text-center border-top pt-3">
+                        <a class="btn-solid theme-primary" href="{% url 'dogs:dogs_list' %}" role="button">Назад</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
