@@ -26,6 +26,13 @@ class DogForm(StyleFormMixin, ModelForm):
         exclude = ("views_counter", "owner")          # exclude - скрывает поле счётчик просмотров
 
 
+class DogModeratorForm(StyleFormMixin, ModelForm):
+    """-28- Класс создает форму Django для добавления или редактирования собаки в базе данных."""
+    class Meta:
+        model = Dog
+        fields = ("description", "breed")          # fields - скрывает поле счётчик просмотров
+
+
 class ParentForm(StyleFormMixin, ModelForm):
     """-26- Класс создает форму Django для добавления и редактирования «Родителей» (Parent),
         которая автоматически генерирует HTML-поля для ввода на основе структуры вашей модели в базе данных."""
