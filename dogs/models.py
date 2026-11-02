@@ -66,6 +66,14 @@ class Dog(models.Model):
         default=0,
     )
 
+    owner = models.ForeignKey(
+        User, verbose_name="Владелец",
+        help_text="Укажите владельца собаки",
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL
+    )
+
     class Meta:
         """-23- Класс реализует внутренние настройки (класс Meta)
             и правило отображения (метод __str__) для модели Dog (Собака)."""
@@ -111,8 +119,7 @@ class Parent(models.Model):
         blank=True,
     )
 
-    owner = models.ForeignKey(User, verbose_name="Владелец", help_text="Укажите владельца собаки", blank=True,
-                              null=True, on_delete=models.SET_NULL)
+
 
     class Meta:
         """-26- Настройки отображения модели Parent (внутренний класс Meta) и её строковое представление."""

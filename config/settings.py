@@ -129,3 +129,6 @@ CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000', 'http://localhost:8000']
 
 # исключает ошибку при нажатии кнопки ВЫХОД пользователя
 LOGOUT_REDIRECT_ALLOWED_METHODS = ['POST', 'GET']
+
+# -28- Задаем глобальный адрес страницы входа для работы LoginRequiredMixin
+LOGIN_URL = 'users:login'
